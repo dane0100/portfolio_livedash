@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Allocations Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .allocation {
+            width: 250px;
+            font-size: 18px;
+            font-weight: bold;
+            padding-right: 20px;
+        }
+        .allocation input {
+            width: 60px;
+            margin-right: 5px;
+        }
+        .chart {
+            flex: 1;
+        }
+        .tradingview-widget-container {
+            height: 300px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Investment Allocations with Live Charts</h1>
+    <p>This dashboard displays your investment allocations sorted by highest percentage allocated to lowest. Add symbol to import chart and match with allocation percentage.</p>
+
+    <div class="form-section">
+        <h2>Add New Investment</h2>
+        <input id="name" placeholder="Name e.g. Apple Inc.">
+        <input id="symbol" placeholder="Symbol e.g. NASDAQ:AAPL">
+        <input id="allocation" type="number" placeholder="Allocation %">
+        <button onclick="addInvestment()">Add</button>
+    </div>
+
+    <div class="form-section">
+        <h2>Display Options</h2>
+        <label for="topN">Show:</label>
+        <select id="topN">
+            <option value="all">All</option>
+            <option value="4" selected>Top 4</option>
+            <option value="3">Top 3</option>
+            <option value="2">Top 2</option>
+            <option value="1">Top 1</option>
+        </select>
+        <button onclick="renderDashboard()">Update and Sort</button>
+    </div>
+
+    <div id="container" class="container"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
